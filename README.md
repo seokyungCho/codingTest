@@ -15,7 +15,7 @@ ATM의 기능을 구현하기 위한 코드로, 다음과 같은 기능을 포�
 
 ---
 
-## Installation
+## Clone
 1. 레포지토리를 로컬에 클론합니다:
    ```bash
    git clone https://github.com/seokyungCho/codingTest.git
@@ -28,5 +28,5 @@ ATM의 기능을 구현하기 위한 코드로, 다음과 같은 기능을 포�
 
    
 ### Build/Install
-
+이 프로젝트는 Build나 Installation을 포함하지 않습니다.
 
