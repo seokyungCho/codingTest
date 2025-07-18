@@ -1,8 +1,9 @@
 def info():
     pin = 2468
     account_info = {12345:0, 567890:0, 98574:0}
+        #계좌와 잔고
+
     return pin, account_info
-    #계좌와 잔고
 
 def check_pin(user_pin, correct_pin):
     return user_pin == correct_pin
@@ -42,31 +43,48 @@ def tasks():
 
 def main():
     pin, account_info = info()
-    user_pin = int(input("Please Enter your pin:"))
-    if check_pin(user_pin, pin):
-        print("Correct pin.")
-    else: 
-        print("Wrong pin")
-        return
-        
-    user_account = int(input("Please enter your account number:"))
-    if choose_account(user_account, account_info):
-        print("Account is in the list.")
-    else: 
-        print("Account is not on the list")
-        return
-    
-    tasks()
-    user_task = int(input(""))
 
-    if user_task == 1:
-        return check_balance(account_info, user_account)
-    elif user_task == 2:
-        return deposit(account_info, user_account)
-    elif user_task == 3:
-        return withdraw(account_info, user_account)
-    else:
-        print("Please choose the task on the list")
+    while True:
+        try:
+            user_pin = int(input("Please Enter your pin:"))
+        except ValueError:
+            print("Invalid pin. Try again")
+            continue
+        if check_pin(user_pin, pin):
+            print("Correct pin.")
+            break
+        else: 
+            print("Wrong pin")
+
+    while True:
+        try:    
+            user_account = int(input("Please enter your account number:"))
+        except ValueError:
+            print("Invalid account. Try again")
+            continue
+        if choose_account(user_account, account_info):
+            print("Account is in the list.")
+            break
+        else: 
+            print("Account is not on the list")
+
+        
+    tasks()
+
+    while True:
+        try:
+            user_task = int(input(""))
+        except ValueError:
+            print("Invalid selection. Try again")
+            continue
+        if user_task == 1:
+            return check_balance(account_info, user_account)
+        elif user_task == 2:
+            return deposit(account_info, user_account)
+        elif user_task == 3:
+            return withdraw(account_info, user_account)
+        else:
+            print("Please choose the task on the list")
 
     
 
