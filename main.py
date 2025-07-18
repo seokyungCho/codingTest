@@ -23,9 +23,12 @@ def deposit(account_info, user_account):
             if added < 0:
                 print("Negative numbers cannot be saved.\n")
                 continue
+            elif added == 0:
+                print("You should enter more than 0 dollar\n")
+                continue
             else:
                 account_info[user_account] += added
-                print("Deposit has been completed. Now your balance is %d" %(account_info[user_account]))
+                print("Deposit has been completed. Now your balance is %d dollars" %(account_info[user_account]))
                 break
         except ValueError:
             print("The amount you want to deposit must be a number.\n")
@@ -42,9 +45,12 @@ def withdraw(account_info, user_account):
             elif subs < 0:
                 print("Negative numbers cannot be withdrawn.\n")
                 continue
+            elif subs == 0:
+                print("You should enter more than 0 dollar")
+                continue
             else:
                 account_info[user_account] -= subs
-                print("Withdrawl has been completed. Now your balance is %d" %(account_info[user_account]))
+                print("Withdrawl has been completed. Now your balance is %d dollars" %(account_info[user_account]))
                 break
         except ValueError:
             print("The amount you want to withdraw must be a number.\n")
@@ -66,15 +72,15 @@ def main():
 
     while True:
         try:
-            user_pin = int(input("Please Enter your pin:"))
+            user_pin = int(input("Please Enter your PIN:"))
         except ValueError:
-            print("Invalid pin. Try again\n")
+            print("Invalid PIN. Try again\n")
             continue
         if check_pin(user_pin, pin):
-            print("Correct pin.\n")
+            print("Correct PIN.\n")
             break
         else: 
-            print("Wrong pin\n")
+            print("Wrong PIN\n")
 
     while True:
         try:    
