@@ -21,14 +21,14 @@ def deposit(account_info, user_account):
         try:
             added = int(input("How much do you want to deposit to account:"))
             if added < 0:
-                print("Negative numbers cannot be saved. ")
+                print("Negative numbers cannot be saved.\n")
                 continue
             else:
                 account_info[user_account] += added
                 print("Deposit has been completed. Now your balance is %d" %(account_info[user_account]))
                 break
         except ValueError:
-            print("The amount you want to deposit must be a number.")
+            print("The amount you want to deposit must be a number.\n")
         
         
 
@@ -37,24 +37,28 @@ def withdraw(account_info, user_account):
         try:
             subs = int(input("How much do you want to withdraw from account?: "))
             if account_info[user_account] <= 0 or subs > account_info[user_account]:
-                print("You don't have enough balance to withdraw.")
+                print("You don't have enough balance to withdraw.\n")
                 continue
             elif subs < 0:
-                print("Negative numbers cannot be withdrawn.")
-                
+                print("Negative numbers cannot be withdrawn.\n")
+                continue
             else:
                 account_info[user_account] -= subs
                 print("Withdrawl has been completed. Now your balance is %d" %(account_info[user_account]))
+                break
         except ValueError:
-            print("The amount you want to withdraw must be a number.")
+            print("The amount you want to withdraw must be a number.\n")
 
 
 def tasks():
+    print("==================================")
     print("Please choose the task below")
     print("1. Check balance.")
     print("2. Deposit.")
     print("3. Withdraw.")
     print("4. Exit. ")
+    print("5. Change account. ")
+    print("==================================")
 
 
 def main():
@@ -64,25 +68,25 @@ def main():
         try:
             user_pin = int(input("Please Enter your pin:"))
         except ValueError:
-            print("Invalid pin. Try again")
+            print("Invalid pin. Try again\n")
             continue
         if check_pin(user_pin, pin):
-            print("Correct pin.")
+            print("Correct pin.\n")
             break
         else: 
-            print("Wrong pin")
+            print("Wrong pin\n")
 
     while True:
         try:    
             user_account = int(input("Please enter your account number:"))
         except ValueError:
-            print("Invalid account. Try again")
+            print("Invalid account. Try again\n")
             continue
         if choose_account(user_account, account_info):
-            print("Account is in the list.")
+            print("Account is in the list.\n")
             break
         else: 
-            print("Account is not on the list")
+            print("Account is not on the list\n")
 
         
     while True:
@@ -91,7 +95,7 @@ def main():
         try:
             user_task = int(input(""))
         except ValueError:
-            print("Invalid selection. Try again")
+            print("Invalid selection. Try again\n")
             continue
         if user_task == 1:
             check_balance(account_info, user_account)
@@ -104,6 +108,19 @@ def main():
         elif user_task == 4:
             print("Thank you for using the service. Goodbye!")
             break
+        elif user_task == 5:
+            while True:
+                try:    
+                    user_account = int(input("Enter the account you want to move to: "))
+                except ValueError:
+                    print("Invalid account. Try again\n")
+                    continue
+                if choose_account(user_account, account_info):
+                    print("Account is in the list.\n")
+                    break
+                else: 
+                    print("Account is not on the list\n")
+    
         else:
             print("Please choose the task on the list")
 
