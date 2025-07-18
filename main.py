@@ -17,24 +17,36 @@ def check_balance(account_info, user_account):
     print("Your current balance in %d is %d dollars" %(user_account, balance))
 
 def deposit(account_info, user_account):
-    try:
-        added = int(input("How much do you want to deposit to account:"))
-        account_info[user_account] += added
-        print("Deposit has been completed. Now your balance is %d" %(account_info[user_account]))
-    except ValueError:
-        print("The amount you want to deposit must be a number.")
+    while True:
+        try:
+            added = int(input("How much do you want to deposit to account:"))
+            if added < 0:
+                print("Negative numbers cannot be saved. ")
+                continue
+            else:
+                account_info[user_account] += added
+                print("Deposit has been completed. Now your balance is %d" %(account_info[user_account]))
+                break
+        except ValueError:
+            print("The amount you want to deposit must be a number.")
+        
         
 
 def withdraw(account_info, user_account):
-    try:
-        subs = int(input("How much do you want to withdraw from account?: "))
-        if account_info[user_account] <= 0 or subs > account_info[user_account]:
-            print("You don't have enough balance to withdraw.")
-        else:
-            account_info[user_account] -= subs
-            print("Withdrawl has been completed. Now your balance is %d" %(account_info[user_account]))
-    except ValueError:
-        print("The amount you want to withdraw must be a number.")
+    while True:
+        try:
+            subs = int(input("How much do you want to withdraw from account?: "))
+            if account_info[user_account] <= 0 or subs > account_info[user_account]:
+                print("You don't have enough balance to withdraw.")
+                continue
+            elif subs < 0:
+                print("Negative numbers cannot be withdrawn.")
+                
+            else:
+                account_info[user_account] -= subs
+                print("Withdrawl has been completed. Now your balance is %d" %(account_info[user_account]))
+        except ValueError:
+            print("The amount you want to withdraw must be a number.")
 
 
 def tasks():
