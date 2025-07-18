@@ -27,6 +27,6 @@ ATM의 기능을 구현하기 위한 코드로, 다음과 같은 기능을 포�
    python codingTest.py
 
    
-### Build/Install
+## Build/Install
 이 프로젝트는 Build나 Installation을 포함하지 않습니다.
 
