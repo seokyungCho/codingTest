@@ -19,8 +19,8 @@ def check_balance(account_info, user_account):
 def deposit(account_info, user_account):
     try:
         added = int(input("How much do you want to deposit to account:"))
-        balance = account_info[user_account] + added
-        print("Deposit has been completed. Now your balance is %d" %(balance))
+        account_info[user_account] += added
+        print("Deposit has been completed. Now your balance is %d" %(account_info[user_account]))
     except ValueError:
         print("The amount you want to deposit must be a number.")
         
@@ -28,12 +28,11 @@ def deposit(account_info, user_account):
 def withdraw(account_info, user_account):
     try:
         subs = int(input("How much do you want to withdraw from account?: "))
-        balance = account_info[user_account]
-        if balance <= 0 or subs > balance:
+        if account_info[user_account] <= 0 or subs > account_info[user_account]:
             print("You don't have enough balance to withdraw.")
         else:
-            balance = balance - subs
-            print("Withdrawl has been completed. Now your balance is %d" %(balance))
+            account_info[user_account] -= subs
+            print("Withdrawl has been completed. Now your balance is %d" %(account_info[user_account]))
     except ValueError:
         print("The amount you want to withdraw must be a number.")
 
