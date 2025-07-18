@@ -43,6 +43,7 @@ def tasks():
     print("1. Check balance.")
     print("2. Deposit.")
     print("3. Withdraw.")
+    print("4. Exit. ")
 
 
 def main():
@@ -73,22 +74,25 @@ def main():
             print("Account is not on the list")
 
         
-    tasks()
-
     while True:
+        tasks()
+
         try:
             user_task = int(input(""))
         except ValueError:
             print("Invalid selection. Try again")
             continue
         if user_task == 1:
-            return check_balance(account_info, user_account)
+            check_balance(account_info, user_account)
         elif user_task == 2:
             print("**You can't deposit cents, only dollars are available**")
-            return deposit(account_info, user_account)
+            deposit(account_info, user_account)
         elif user_task == 3:
             print("**You can't wirhdraw cents, only dollars are available**")
-            return withdraw(account_info, user_account)
+            withdraw(account_info, user_account)
+        elif user_task == 4:
+            print("Thank you for using the service. Goodbye!")
+            break
         else:
             print("Please choose the task on the list")
 
