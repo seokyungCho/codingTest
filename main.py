@@ -17,21 +17,25 @@ def check_balance(account_info, user_account):
     print("Your current balance in %d is %d dollars" %(user_account, balance))
 
 def deposit(account_info, user_account):
-    added = int(input("How much do you want to deposit to account:"))
-    balance = account_info[user_account] + added
-    if not isinstance(balance, int):
-        print("You can't deposit cents.")
-    else:
+    try:
+        added = int(input("How much do you want to deposit to account:"))
+        balance = account_info[user_account] + added
         print("Deposit has been completed. Now your balance is %d" %(balance))
+    except ValueError:
+        print("The amount you want to deposit must be a number.")
+        
 
 def withdraw(account_info, user_account):
-    subs = int(input("How much do you want to withdraw from account?: "))
-    balance = account_info[user_account]
-    if balance <= 0 or subs > balance:
-        print("You don't have enough balance.")
-    else:
-        balance = balance - subs
-        print("Withdrawl has been completed. Now your balance is %d" %(balance))
+    try:
+        subs = int(input("How much do you want to withdraw from account?: "))
+        balance = account_info[user_account]
+        if balance <= 0 or subs > balance:
+            print("You don't have enough balance to withdraw.")
+        else:
+            balance = balance - subs
+            print("Withdrawl has been completed. Now your balance is %d" %(balance))
+    except ValueError:
+        print("The amount you want to withdraw must be a number.")
 
 
 def tasks():
@@ -80,8 +84,10 @@ def main():
         if user_task == 1:
             return check_balance(account_info, user_account)
         elif user_task == 2:
+            print("**You can't deposit cents, only dollars are available**")
             return deposit(account_info, user_account)
         elif user_task == 3:
+            print("**You can't wirhdraw cents, only dollars are available**")
             return withdraw(account_info, user_account)
         else:
             print("Please choose the task on the list")
