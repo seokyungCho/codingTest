@@ -7,15 +7,29 @@
 ## Introduction
 ATM의 기능을 구현하기 위한 코드로, 다음과 같은 기능을 포함합니다.
 
-### Features in function
-- pin 번호 검사
-- 계좌 선택
-- 해당 계좌의 잔액확인/입금/출금
-- 계좌 변경
+### Functions
+**info()**: 사용자의 계좌 정보를 포함
+
+**check_pin()**: 사용자의 pin을 입력받아 실제 pin과 동일한지 확인
+
+**choose_account()**: 사용자의 계좌 중 입력받은 계좌를 선택
+
+**check_balance()**: 선택된 계좌의 잔액(balance)를 확인
+
+**deposit()**: 선택된 계좌에 대한 입금 기능을 수행
+
+**withdraw()**: 선택된 계좌에 대한 출금 기능을 수행
+
+**tasks()**: 가능한 작업 목록을 출력함
+
+**main()**: 위의 함수들에 대한 전체 ATM 알고리즘을 수행
+
 
 ---
 
-## Clone
+
+
+## 시작하기
 1. 레포지토리를 로컬에 클론합니다:
    ```bash
    git clone https://github.com/seokyungCho/codingTest.git
